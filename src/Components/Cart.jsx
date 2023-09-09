@@ -1,7 +1,14 @@
-export default function Cart({ token, IsLoggedIn }) {
+import { useState } from "react";
+import AddToCartButton from "./AddToCartButton";
+
+export default function Cart({ token, IsLoggedIn, quantity }) {
   return (
     <>
-      <h1>View Cart</h1>
+      <div className="CartView">
+        <h1>View Cart</h1>
+        {console.log("token", token)}
+        {console.log(quantity)}
+      </div>
     </>
   );
 }

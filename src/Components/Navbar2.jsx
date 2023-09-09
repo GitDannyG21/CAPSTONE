@@ -16,14 +16,14 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn, token }) {
         </li>
 
         <li>
-          <Link to="/SalePage">Items For Sale</Link>
+          <Link to="/products">Items For Sale</Link>
         </li>
 
         <li>
           <Link to="/Cart">View Cart</Link>
         </li>
 
-        {/* {isLoggedIn ? (
+        {isLoggedIn ? (
           <li>
             {" "}
             <Link to="/Logout"> Logout </Link>
@@ -32,11 +32,11 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn, token }) {
           <li>
             <Link to="/login">Login</Link>
           </li>
-        )} */}
+        )}
 
-        <li>
+        {/* <li>
           <Link to="/login">Login</Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

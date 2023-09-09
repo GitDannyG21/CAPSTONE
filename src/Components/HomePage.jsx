@@ -7,7 +7,7 @@ export default function HomePage(token, IsLoggedIn, setToken) {
       <br></br>
       <br></br>
       <h2>
-        Here you can give or get the drop on any items from our community of
+        Here you can give or get the drop on what you want from our community of
         members! Sign in or create an account to get started. Must be logged in
         before checkout.
       </h2>
