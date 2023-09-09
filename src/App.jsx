@@ -13,6 +13,7 @@ import SingleItemRender from "./Components/SingleItemRender.jsx";
 import AddToCartButton from "./Components/AddToCartButton.jsx";
 import Logout from "./Components/Logout.jsx";
 import SortBar from "./Components/SortBar.jsx";
+import FilterBar from "./Components/FilterBar.jsx";
 // let's try and make this more component oriented
 // SAVE THIS FOR USING ROUTER DOM npm install react-router-dom localforage match-sorter sort-by
 // Trying new format of making seperate file of fetch/helper functions, and exporting, for cleaner code
@@ -24,6 +25,7 @@ function App() {
   const [singleProdcut, setSingleProduct] = useState({});
   const [itemId, setItemId] = useState("id");
   const [render, setRender] = useState(null);
+  const [sortedArray, setSortedArray] = useState([]);
   // I need to setItem local storage at log in or register pages, then pass through app
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
@@ -63,6 +65,8 @@ function App() {
               setSingleProduct={setSingleProduct}
               render={render}
               setRender={setRender}
+              setSortedArray={setSortedArray}
+              sortedArray={sortedArray}
             />
           }
         />
@@ -88,7 +92,26 @@ function App() {
           path="/Logout"
           element={<Logout setToken={setToken} setLoggedIn={setLoggedIn} />}
         />
-        <Route path="/SortBar" element={<SortBar setRender={setRender} />} />
+        <Route
+          path="/SortBar"
+          element={
+            <SortBar
+              setRender={setRender}
+              setSortedArray={setSortedArray}
+              sortedArray={sortedArray}
+            />
+          }
+        />
+        <Route
+          path="/FilterBar"
+          element={
+            <FilterBar
+              setRender={setRender}
+              sortedArray={sortedArray}
+              setSortedArray={setSortedArray}
+            />
+          }
+        />
       </Routes>
     </>
   );

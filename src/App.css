@@ -199,16 +199,11 @@ img {
 .sortedRender {
   text-align: center;
   display: flex;
-  /* flex-wrap: wrap; */
-  /* flex-direction: row;
-  flex-flow: row nowrap; */
   flex-flow: row wrap;
-  /* height: 250px;
-  width: 250px; */
+
   justify-content: space-between;
   justify-content: space-around;
   justify-content: center;
-  /* padding: 25px; */
   padding-top: 25px;
 }
 
@@ -224,6 +219,16 @@ img {
 }
 
 .SortBar {
+  padding-left: 100px;
+  font-size: x-large;
+  font-family: fantasy;
+  color: black;
+  display: inline block;
+}
+
+.FilterBar {
+  display: inline-block;
+  padding-left: 300px;
   font-size: larger;
   font-family: fantasy;
   color: black;

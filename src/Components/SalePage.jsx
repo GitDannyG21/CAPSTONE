@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import SingleItemButton from "./SingleItemButton";
 import SortBar from "./SortBar";
+import FilterBar from "./FilterBar";
+
+// gonna just combined sort and filter for now
 
 export default function SalePage({ setProducts, products, render, setRender }) {
   const navigate = useNavigate();
@@ -38,16 +41,26 @@ export default function SalePage({ setProducts, products, render, setRender }) {
     <>
       {render ? (
         <>
-          <h1 className="SaleHeader">Items Currently For Sale</h1>
-          <br></br>
-          <SortBar products={products} render={render} setRender={setRender} />
-          <br></br>
+          <h1 className="SaleHeader">Items Currently For Sale, Test</h1>
+
+          <div className="firstRender">
+            <br></br>
+
+            <SortBar
+              products={products}
+              render={render}
+              setRender={setRender}
+            />
+            <br></br>
+          </div>
         </>
       ) : (
         <>
           <h1 className="SaleHeader">Items Currently For Sale</h1>
           <br></br>
           <SortBar products={products} render={render} setRender={setRender} />
+          <br></br>
+          {/* <FilterBar /> */}
           {/* <br></br> */}
           <div className="ProductsPage">
             {products.map((product) => {
