@@ -111,9 +111,6 @@ export default function Cart({
   }
 
   async function checkoutFunction(e) {
-    // isLoggedIn
-    //   ? alert("Purchase Completed")
-    //   : alert("Must be logged in to checkout");
     if (isLoggedIn && cartArray.length > 0) {
       alert("Purchase Completed");
     }
@@ -153,8 +150,6 @@ export default function Cart({
                     <br></br>
                     Subotal: $
                     {(cart.price.toFixed(2) * cart.quantity).toFixed(2)}
-                    {/* Quantity: {cart.quantity} */}
-                    {/* How can I change the new quantity from here? */}
                     <br></br>
                     <br></br>
                     <form className="cartChange">
@@ -181,14 +176,12 @@ export default function Cart({
                           placeholder={cart.quantity}
                           value={cart.quantity}
                           readOnly
-                          // onChange={(e) => finalSelection(e.target.value)}
                         ></input>
                         <br></br>
                         <br></br>
                         <button onClick={() => removeFromCart(cart.id)}>
                           Remove Item From Cart
                         </button>
-                        {/* logic for this? Remove specific element from array */}
                       </label>
                     </form>
                     <br></br>

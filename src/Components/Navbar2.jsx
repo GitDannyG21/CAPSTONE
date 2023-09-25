@@ -34,10 +34,6 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn, token }) {
             <Link to="/login">Login</Link>
           </li>
         )}
-
-        {/* <li>
-          <Link to="/login">Login</Link>
-        </li> */}
       </ul>
     </nav>
   );

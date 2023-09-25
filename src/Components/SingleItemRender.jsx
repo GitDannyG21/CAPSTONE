@@ -21,23 +21,6 @@ export default function singleItem({
   // const [item, setItem] = useState([]);
 
   let { id } = useParams();
-  //   console.log("id", id);
-  //   console.log(products);
-  //   console.log(products);
-  //   useEffect(
-  //     () =>
-  //       async function getSingleProduct() {
-  //         try {
-  //           const response = await fetch(`${baseURL}/products/${id}`);
-  //           const data = await response.json();
-  //           console.log(data);
-  //         } catch (err) {
-  //           //   console.error("trouble fetching product", err);
-  //         }
-  //         getSingleProduct();
-  //       },
-  //     []
-  //   );
 
   console.log(cartArray);
 
@@ -57,14 +40,10 @@ export default function singleItem({
     getSingleProduct();
   }, []);
 
-  //   console.log(item);
-  // How can I change price to fixed here
-
   return (
     <>
       {singleProduct && (
         <div className="SingleProductView">
-          {/* <h1> Single Item View</h1> */}
           <br></br>
 
           <h3>{singleProduct.title}</h3>

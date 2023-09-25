@@ -24,22 +24,15 @@ export default function SalePage({
   setCartArray,
 }) {
   const navigate = useNavigate();
-  // const [products, setProducts] = useState([]);
-  // console.log("test");
-  // console.log(products);
-  // console.log(render);
+
   useEffect(() => {
     const getAllProducts = async () => {
       try {
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
-        // console.log(response);
-        // console.log("data", data);
+
         setProducts(data);
         console.log("in this function");
-        // console.log(products);
-        // return products;
-        // console.log(data);
       } catch (err) {
         console.error("trouble fetching products", err);
       }
