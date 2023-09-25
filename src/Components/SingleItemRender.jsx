@@ -3,8 +3,22 @@ import { useParams } from "react-router-dom";
 import ProductsApi from "./ProductsApi";
 import AddToCartButton from "./AddToCartButton";
 
-export default function singleItem({ setRender, render }) {
-  const [item, setItem] = useState([]);
+export default function singleItem({
+  setRender,
+  render,
+  cartItem,
+  setCartItem,
+  cartProduct,
+  quantity,
+  setQuantity,
+  setCartProduct,
+  singleProduct,
+  setSingleProduct,
+  products,
+  cartArray,
+  setCartArray,
+}) {
+  // const [item, setItem] = useState([]);
 
   let { id } = useParams();
   //   console.log("id", id);
@@ -24,13 +38,16 @@ export default function singleItem({ setRender, render }) {
   //       },
   //     []
   //   );
+
+  console.log(cartArray);
+
   useEffect(() => {
     async function getSingleProduct() {
       try {
         const response = await fetch(`https://fakestoreapi.com/products/${id}`);
         const data = await response.json();
 
-        setItem(data);
+        setSingleProduct(data);
         setRender(false);
         console.log(render);
       } catch (err) {
@@ -41,27 +58,42 @@ export default function singleItem({ setRender, render }) {
   }, []);
 
   //   console.log(item);
+  // How can I change price to fixed here
 
   return (
     <>
-      <div className="SingleProductView">
-        {/* <h1> Single Item View</h1> */}
-        <br></br>
+      {singleProduct && (
+        <div className="SingleProductView">
+          {/* <h1> Single Item View</h1> */}
+          <br></br>
 
-        <h3>{item.title}</h3>
-        <br></br>
-        <p>
-          <img src={item.image} />
-        </p>
-        <br></br>
-        <p>${item.price}</p>
+          <h3>{singleProduct.title}</h3>
+          <br></br>
+          <p>
+            <img className="img1" src={singleProduct.image} />
+          </p>
+          <br></br>
+          <p>${singleProduct.price}</p>
 
-        <p>{item.description}</p>
+          <p>{singleProduct.description}</p>
 
-        <AddToCartButton />
+          <AddToCartButton
+            cartItem={cartItem}
+            setCartItem={setCartItem}
+            quantity={quantity}
+            setQuantity={setQuantity}
+            singleProduct={singleProduct}
+            setSingleProduct={setSingleProduct}
+            cartProduct={cartProduct}
+            setCartProduct={setCartProduct}
+            products={products}
+            cartArray={cartArray}
+            setCartArray={setCartArray}
+          />
 
-        <p></p>
-      </div>
+          <p></p>
+        </div>
+      )}
     </>
   );
 }

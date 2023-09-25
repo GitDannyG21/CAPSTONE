@@ -132,11 +132,27 @@ h2 {
 img {
   height: 250px;
   width: 250px;
+  border: 5px solid rgb(66, 28, 51);
+  border-radius: 5px;
+}
+
+.img1 {
+  height: 250px;
+  width: 250px;
   /* justify-content: center;
   flex: row;
   justify-content: center; */
   border: 5px solid rgb(66, 28, 51);
   border-radius: 5px;
+}
+
+.CartBox {
+  height: 650px;
+  width: 400px;
+  border: 5px solid rgb(66, 28, 51);
+  border-radius: 2px;
+  width: 100%;
+  padding: 25px;
 }
 
 .SaleHeader {
@@ -161,8 +177,10 @@ img {
 }
 
 .CartView {
-  justify-content: center;
-  text-align: center;
+  justify-content: left;
+  text-align: left;
+  padding-left: 125px;
+  /* display: inline; */
 }
 
 .quantity {
@@ -232,4 +250,31 @@ img {
   font-size: larger;
   font-family: fantasy;
   color: black;
+}
+
+.SelectButton {
+  margin-left: 30px;
+}
+
+.cartHeader {
+  text-align: center;
+}
+
+.cartChange {
+  display: inline-block;
+}
+
+.buttonBox {
+  margin: auto;
+  padding-left: 50px;
+}
+
+.cartIMG {
+  height: 250px;
+  width: 250px;
+}
+
+.CartPage {
+  justify-content: left;
+  padding-left: 50px;
 }

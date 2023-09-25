@@ -22,10 +22,17 @@ function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [token, setToken] = useState(null);
   const [products, setProducts] = useState([]);
-  const [singleProdcut, setSingleProduct] = useState({});
+
   const [itemId, setItemId] = useState("id");
-  const [render, setRender] = useState(null);
+  const [render, setRender] = useState(false);
+  const [cartItem, setCartItem] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+  const [singleProduct, setSingleProduct] = useState([]);
+  const [cartProduct, setCartProduct] = useState([]);
+  const [sort, setSort] = useState("");
   const [sortedArray, setSortedArray] = useState([]);
+  const [cartArray, setCartArray] = useState([]);
+
   // I need to setItem local storage at log in or register pages, then pass through app
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
@@ -39,8 +46,6 @@ function App() {
     <>
       <Navbar2 isLoggedIn={isLoggedIn} setIsLoggedIn={setLoggedIn} />
       <br></br>
-      {/* <HomePage /> */}
-      {/* <CartApi /> */}
 
       <Routes>
         <Route
@@ -62,32 +67,91 @@ function App() {
               token={token}
               setProducts={setProducts}
               products={products}
-              setSingleProduct={setSingleProduct}
+              sort={sort}
+              setSort={setSort}
               render={render}
               setRender={setRender}
-              setSortedArray={setSortedArray}
               sortedArray={sortedArray}
+              setSortedArray={setSortedArray}
+              cartArray={cartArray}
+              setCartArray={setCartArray}
+              quantity={quantity}
+              setQuantity={setQuantity}
             />
           }
         />
-        <Route path="/Cart" element={<Cart token={token} />} />
+        <Route
+          path="/Cart"
+          element={
+            <Cart
+              token={token}
+              cartItem={cartItem}
+              setCartItem={setCartItem}
+              products={products}
+              isLoggedIn={isLoggedIn}
+              singleProduct={singleProduct}
+              cartProduct={cartProduct}
+              setCartProduct={setCartProduct}
+              setSingleProduct={setSingleProduct}
+              cartArray={cartArray}
+              setCartArray={setCartArray}
+              quantity={quantity}
+              setQuantity={setQuantity}
+            />
+          }
+        />
         <Route
           path="/products/:id"
           element={
             <SingleItemRender
               products={products}
-              singleProdcut={singleProdcut}
+              singleProduct={singleProduct}
+              setSingleProduct={setSingleProduct}
+              cartProduct={cartProduct}
+              setCartProduct={setCartProduct}
               render={render}
               setRender={setRender}
+              cartItem={cartItem}
+              setCartItem={setCartItem}
+              cartArray={cartArray}
+              setCartArray={setCartArray}
+              quantity={quantity}
+              setQuantity={setQuantity}
             />
           }
         />
         <Route
           path="/SingleItemButton"
-          element={<SingleItemButton itemId={itemId} setItemId={setItemId} />}
+          element={
+            <SingleItemButton
+              itemId={itemId}
+              setItemId={setItemId}
+              cartArray={cartArray}
+              setCartArray={setCartArray}
+              quantity={quantity}
+              setQuantity={setQuantity}
+            />
+          }
         />
 
-        <Route path="/AddToCartButton" element={<AddToCartButton />} />
+        <Route
+          path="/AddToCartButton"
+          element={
+            <AddToCartButton
+              cartItem={cartItem}
+              setCartItem={setCartItem}
+              cartProduct={cartProduct}
+              setCartProduct={setCartProduct}
+              singleProduct={singleProduct}
+              setSingleProduct={setSingleProduct}
+              cartArray={cartArray}
+              setCartArray={setCartArray}
+              products={products}
+              quantity={quantity}
+              setQuantity={setQuantity}
+            />
+          }
+        />
         <Route
           path="/Logout"
           element={<Logout setToken={setToken} setLoggedIn={setLoggedIn} />}
@@ -97,20 +161,18 @@ function App() {
           element={
             <SortBar
               setRender={setRender}
-              setSortedArray={setSortedArray}
+              sort={sort}
+              setSort={setSort}
               sortedArray={sortedArray}
+              setSortedArray={setSortedArray}
+              quantity={quantity}
+              setQuantity={setQuantity}
             />
           }
         />
         <Route
           path="/FilterBar"
-          element={
-            <FilterBar
-              setRender={setRender}
-              sortedArray={sortedArray}
-              setSortedArray={setSortedArray}
-            />
-          }
+          element={<FilterBar setRender={setRender} />}
         />
       </Routes>
     </>
