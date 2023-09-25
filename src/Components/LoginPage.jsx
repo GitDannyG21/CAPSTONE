@@ -11,6 +11,7 @@ export default function LoginPage({
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  console.log(isLoggedIn);
 
   async function fetchUser(username, password) {
     const res = await fetch(
@@ -27,8 +28,7 @@ export default function LoginPage({
         }),
       }
     );
-    //.then((res) => res.json())
-    // .then((json) => console.log(json));
+
     const result = await res.json();
     console.log(result);
     localStorage.setItem("token", JSON.stringify(result.token));
@@ -46,6 +46,8 @@ export default function LoginPage({
     event.preventDefault();
     await fetchUser(username, password);
     console.log(username, password);
+    console.log(isLoggedIn);
+    console.log(token);
   }
 
   return (
